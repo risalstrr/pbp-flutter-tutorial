@@ -28,67 +28,6 @@ class _MyFormPageState extends State<MyFormPage> {
       drawer: Drawer(
         child: Column(
           children: [
-            SwitchListTile(
-              title: const Text('Practice Mode'),
-              value: _nilaiSwitch,
-              onChanged: (bool value) {
-                setState(() {
-                  _nilaiSwitch = value;
-                });
-              },
-              secondary: const Icon(Icons.run_circle_outlined),
-            ),
-            ListTile(
-              leading: const Icon(Icons.class_),
-              title: const Text(
-                'Kelas PBP',
-              ),
-              trailing: DropdownButton(
-                value: kelasPBP,
-                icon: const Icon(Icons.keyboard_arrow_down),
-                items: listKelasPBP.map((String items) {
-                  return DropdownMenuItem(
-                    value: items,
-                    child: Text(items),
-                  );
-                }).toList(),
-                onChanged: (String? newValue) {
-                  setState(() {
-                    kelasPBP = newValue!;
-                  });
-                },
-              ),
-            ),
-            ListTile(
-              leading: const Icon(Icons.co_present),
-              title: Row(
-                children: [
-                  Text('Umur: ${umur.round()}'),
-                ],
-              ),
-              subtitle: Slider(
-                value: umur,
-                max: 100,
-                divisions: 100,
-                label: umur.round().toString(),
-                onChanged: (double value) {
-                  setState(() {
-                    umur = value;
-                  });
-                },
-              ),
-            ),
-            // Menambahkan clickable menu
-            ListTile(
-              title: const Text('Counter'),
-              onTap: () {
-                // Route menu ke halaman utama
-                Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(builder: (context) => const MyHomePage()),
-                );
-              },
-            ),
             ListTile(
               title: const Text('Form'),
               onTap: () {
@@ -168,6 +107,68 @@ class _MyFormPageState extends State<MyFormPage> {
                             jenjangSarjana = jenjangDiploma = false;
                       }
                     });
+                  },
+                ),
+                SwitchListTile(
+                  title: const Text('Practice Mode'),
+                  value: _nilaiSwitch,
+                  onChanged: (bool value) {
+                    setState(() {
+                      _nilaiSwitch = value;
+                    });
+                  },
+                  secondary: const Icon(Icons.run_circle_outlined),
+                ),
+                ListTile(
+                  leading: const Icon(Icons.class_),
+                  title: const Text(
+                    'Kelas PBP',
+                  ),
+                  trailing: DropdownButton(
+                    value: kelasPBP,
+                    icon: const Icon(Icons.keyboard_arrow_down),
+                    items: listKelasPBP.map((String items) {
+                      return DropdownMenuItem(
+                        value: items,
+                        child: Text(items),
+                      );
+                    }).toList(),
+                    onChanged: (String? newValue) {
+                      setState(() {
+                        kelasPBP = newValue!;
+                      });
+                    },
+                  ),
+                ),
+                ListTile(
+                  leading: const Icon(Icons.co_present),
+                  title: Row(
+                    children: [
+                      Text('Umur: ${umur.round()}'),
+                    ],
+                  ),
+                  subtitle: Slider(
+                    value: umur,
+                    max: 100,
+                    divisions: 100,
+                    label: umur.round().toString(),
+                    onChanged: (double value) {
+                      setState(() {
+                        umur = value;
+                      });
+                    },
+                  ),
+                ),
+                // Menambahkan clickable menu
+                ListTile(
+                  title: const Text('Counter'),
+                  onTap: () {
+                    // Route menu ke halaman utama
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const MyHomePage()),
+                    );
                   },
                 ),
                 Padding(
